@@ -1,0 +1,74 @@
+Title: A decentralized exchange powered by SUI 。 
+Secondary Title: Our vision is to revolutionize perpetual trading in decentralized finance by offering a user-centric platform that prioritizes efficiency, transparency, and control.  特征介绍部分：
+
+Feature
+
+we aim to provide traders with the tools necessary to engage in on-chain asset confidently while enjoying a frictionless trading environment.   1.Easy and Secure Wallet Management
+
+Users can easily create and manage their wallets without the hassle of memorizing mnemonic phrases or private keys. They can simply create and access a wallet using their Google account or passkey in just 3 seconds.  2. Ultra User Experience on Perpetual Trading
+
+We strive to provide a trading experience that rivals leading CEXs. Our intuitive interface, seamless navigation, and responsive design ensure that users can trade effortlessly, whether they are beginners or professionals  3. Order Book Feature
+
+Our advanced order book functionality supports real-time trading, allowing users to place limit and market orders for precise control over their trades. This feature enhances liquidity and enables traders to execute orders at their desired price points in a decentralized environment   4. High Throughput and Low Latency
+
+Built on the SUI blockchain, our DEX leverages high throughput and low latency capabilities, ensuring fast transaction execution, even during periods of high volatility.  
+
+RoadMap
+
+2025 Roadmap for DipCoin Smart Contract Development
+Q2: Spot AMM Deployment
+Core Tasks:
+Smart Contract Logic Design & Implementation:
+Implement asset storage functionality to efficiently manage multiple trading pairs. Develop order matching algorithms, such as Projection Sorting (Projections Sorting), to efficiently match buy and sell orders. Design a price determination model that selects the optimal price based on current market conditions.
+
+User Interface Design & Development:
+Create an intuitive trading interface to streamline operations. Provide real-time price display, order execution status feedback, and asset balance queries.
+
+Expected Outcomes:
+Successful deployment of the Spot AMM smart contract with basic trading functionalities, including limit orders and market orders. A user-friendly interface that enables test users to easily navigate and execute trades.
+
+Potential Challenges:
+Order Matching Efficiency: Addressing high-frequency trading demands while avoiding system performance bottlenecks. Price Determination Models: Selecting a price model that maintains market liquidity without susceptibility to price manipulations. User Experience Optimization: Ensuring the interface is responsive and provides a seamless trading experience.
+
+Q3: Perpetual Contracts Deployment
+Core Tasks:
+Perpetual Contract Logic Design & Implementation:
+Develop automated margin call and liquidation mechanisms to ensure risk management compliance. Implement strategies to match the price movements of Spot assets for perpetual contracts. Enhance market depth and liquidity through order book optimization.
+
+QoS (Quality of Service) Enhancement:
+Improve transaction processing capabilities to handle high volumes. Optimize smart contract execution time for better performance.
+
+Margin Monitoring & Risk Management:
+Establish mechanisms to monitor and manage margin levels in real-time. Implement safeguards against potential market abuses, such as flash crashes.
+
+Expected Outcomes:
+Successful deployment of Perpetual Contracts with robust risk management systems. Enhanced market depth and liquidity, ensuring a smooth trading experience for users.
+
+Potential Challenges:
+Automated Liquidation Strategies: Ensuring these strategies are efficient yet fair to all parties involved. Market Abuse Prevention: Implementing safeguards against manipulative practices without stifling legitimate trade activity. Performance Optimization: Balancing transaction volume and execution speed while maintaining network scalability.
+
+Q4: Expansion of Products & Features
+Core Tasks:
+Flow Monitoring & Risk Management:
+Develop algorithms to monitor and adjust liquidity provision based on market conditions.
+
+Algorithmic Trading Strategies Integration:
+Implement advanced trading strategies, such as Automated Market Making (AMM) and Grid Trading.
+
+Risk Management Enhancements:
+Improve margin call triggers and liquidation thresholds.
+
+User Interface Customization:
+Introduce advanced trading features, including customizable charting tools and advanced order types.
+
+Expected Outcomes:
+
+Introduction of additional liquidity products, such as automated market-making (AMM) and grid trading.
+Enhanced risk management systems to better protect user assets.
+A more feature-rich trading interface that appeals to a broader range of users.
+Potential Challenges:
+
+Algorithmic Performance: Ensuring the algorithms are accurate and performant without introducing biases or inefficiencies.
+Competition with Existing Platforms: Differentiating your platform in a competitive market while maintaining uniqueness and quality.
+Scalability Issues: Addressing potential scalability challenges as user numbers and transaction volumes grow.
+Security Audits: Conducting thorough security audits to ensure smart contracts are immune to vulnerabilities.

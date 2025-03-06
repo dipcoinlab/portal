@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DipCoin DEX - Powered by SUI</title>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #fd79a8;
+            --background-color: #0f1218;
+            --card-bg-color: #1a202c;
+            --text-color: #f5f6fa;
+            --text-secondary: #a0aec0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(15, 18, 24, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.2;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+        }
+        
+        .coming-soon {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 0.15rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, rgba(15, 18, 24, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--text-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            color: var(--text-secondary);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background-color: var(--card-bg-color);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .feature-number {
+            font-size: 4rem;
+            position: absolute;
+            bottom: -20px;
+            right: 10px;
+            font-weight: 900;
+            opacity: 0.1;
+            color: var(--primary-color);
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Roadmap Section */
+        .roadmap {
+            padding: 5rem 0;
+            background-color: rgba(26, 32, 44, 0.4);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: var(--primary-color);
+            transform: translateX(-50%);
+        }
+        
+        .quarter {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .quarter:last-child {
+            margin-bottom: 0;
+        }
+        
+        .quarter-container {
+            padding: 2rem;
+            background-color: var(--card-bg-color);
+            border-radius: 16px;
+            width: calc(50% - 2rem);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+        
+        .quarter:nth-child(odd) .quarter-container {
+            margin-left: auto;
+        }
+        
+        .quarter::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            z-index: 1;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .quarter-title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .quarter-subtitle {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .task-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .task-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .task-list {
+            list-style-type: none;
+            margin-left: 1rem;
+        }
+        
+        .task-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .task-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+        
+        .outcome-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        .challenge-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 2rem;
+            }
+            
+            .quarter-container {
+                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
+            }
+            
+            .quarter::after {
+                left: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">DipCoin</div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#">Documentation</a>
+                <a href="#">Community</a>
+            </nav>
+            <button class="cta-button">Launch App<span class="coming-soon">Coming soon</span></button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">A decentralized exchange powered by SUI</h1>
+                <p class="hero-subtitle">Our vision is to revolutionize perpetual trading in decentralized finance by offering a user-centric platform that prioritizes efficiency, transparency, and control.</p>
+                <button class="cta-button">Start Trading</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Features</h2>
+            <p class="section-subtitle">We aim to provide traders with the tools necessary to engage in on-chain assets confidently while enjoying a frictionless trading environment.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-number">1</span>
+                    <h3 class="feature-title">Easy and Secure Wallet Management</h3>
+                    <p class="feature-description">Users can easily create and manage their wallets without the hassle of memorizing mnemonic phrases or private keys. They can simply create and access a wallet using their Google account or passkey in just 3 seconds.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-number">2</span>
+                    <h3 class="feature-title">Ultra User Experience on Perpetual Trading</h3>
+                    <p class="feature-description">We strive to provide a trading experience that rivals leading CEXs. Our intuitive interface, seamless navigation, and responsive design ensure that users can trade effortlessly, whether they are beginners or professionals.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-number">3</span>
+                    <h3 class="feature-title">Order Book Feature</h3>
+                    <p class="feature-description">Our advanced order book functionality supports real-time trading, allowing users to place limit and market orders for precise control over their trades. This feature enhances liquidity and enables traders to execute orders at their desired price points in a decentralized environment.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-number">4</span>
+                    <h3 class="feature-title">High Throughput and Low Latency</h3>
+                    <p class="feature-description">Built on the SUI blockchain, our DEX leverages high throughput and low latency capabilities, ensuring fast transaction execution, even during periods of high volatility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <h2 class="section-title">2025 Roadmap</h2>
+            <p class="section-subtitle">Our development plan for DipCoin Smart Contract Development</p>
+            
+            <div class="timeline">
+                <div class="quarter">
+                    <div class="quarter-container">
+                        <h3 class="quarter-title">Q2: Spot AMM Deployment</h3>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">Smart Contract Logic Design & Implementation:</h4>
+                            <ul class="task-list">
+                                <li>Implement asset storage functionality to efficiently manage multiple trading pairs</li>
+                                <li>Develop order matching algorithms, such as Projection Sorting, to efficiently match buy and sell orders</li>
+                                <li>Design a price determination model that selects the optimal price based on current market conditions</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">User Interface Design & Development:</h4>
+                            <ul class="task-list">
+                                <li>Create an intuitive trading interface to streamline operations</li>
+                                <li>Provide real-time price display, order execution status feedback, and asset balance queries</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="outcome-title">Expected Outcomes:</h4>
+                        <ul class="task-list">
+                            <li>Successful deployment of the Spot AMM smart contract with basic trading functionalities</li>
+                            <li>A user-friendly interface that enables test users to easily navigate and execute trades</li>
+                        </ul>
+                        
+                        <h4 class="challenge-title">Potential Challenges:</h4>
+                        <ul class="task-list">
+                            <li>Order Matching Efficiency: Addressing high-frequency trading demands</li>
+                            <li>Price Determination Models: Selecting a price model that maintains market liquidity</li>
+                            <li>User Experience Optimization: Ensuring a responsive and seamless trading experience</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="quarter">
+                    <div class="quarter-container">
+                        <h3 class="quarter-title">Q3: Perpetual Contracts Deployment</h3>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">Perpetual Contract Logic Design & Implementation:</h4>
+                            <ul class="task-list">
+                                <li>Develop automated margin call and liquidation mechanisms</li>
+                                <li>Implement strategies to match the price movements of Spot assets for perpetual contracts</li>
+                                <li>Enhance market depth and liquidity through order book optimization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">QoS (Quality of Service) Enhancement:</h4>
+                            <ul class="task-list">
+                                <li>Improve transaction processing capabilities to handle high volumes</li>
+                                <li>Optimize smart contract execution time for better performance</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">Margin Monitoring & Risk Management:</h4>
+                            <ul class="task-list">
+                                <li>Establish mechanisms to monitor and manage margin levels in real-time</li>
+                                <li>Implement safeguards against potential market abuses</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="outcome-title">Expected Outcomes:</h4>
+                        <ul class="task-list">
+                            <li>Successful deployment of Perpetual Contracts with robust risk management systems</li>
+                            <li>Enhanced market depth and liquidity, ensuring a smooth trading experience</li>
+                        </ul>
+                        
+                        <h4 class="challenge-title">Potential Challenges:</h4>
+                        <ul class="task-list">
+                            <li>Automated Liquidation Strategies: Ensuring these strategies are efficient yet fair</li>
+                            <li>Market Abuse Prevention: Implementing safeguards against manipulative practices</li>
+                            <li>Performance Optimization: Balancing transaction volume and execution speed</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="quarter">
+                    <div class="quarter-container">
+                        <h3 class="quarter-title">Q4: Expansion of Products & Features</h3>
+                        
+                        <div class="task-group">
+                            <h4 class="task-title">Core Tasks:</h4>
+                            <ul class="task-list">
+                                <li>Flow Monitoring & Risk Management: Develop algorithms to monitor and adjust liquidity</li>
+                                <li>Algorithmic Trading Strategies Integration: Implement AMM and Grid Trading</li>
+                                <li>Risk Management Enhancements: Improve margin call triggers and liquidation thresholds</li>
+                                <li>User Interface Customization: Introduce advanced trading features and tools</li>
+                            </ul>
+                        </div>
+                        
+                        <h4 class="outcome-title">Expected Outcomes:</h4>
+                        <ul class="task-list">
+                            <li>Introduction of additional liquidity products</li>
+                            <li>Enhanced risk management systems to better protect user assets</li>
+                            <li>A more feature-rich trading interface for broader user appeal</li>
+                        </ul>
+                        
+                        <h4 class="challenge-title">Potential Challenges:</h4>
+                        <ul class="task-list">
+                            <li>Algorithmic Performance: Ensuring accuracy without introducing biases</li>
+                            <li>Competition with Existing Platforms: Differentiation in a competitive market</li>
+                            <li>Scalability Issues: Addressing challenges as user numbers grow</li>
+                            <li>Security Audits: Conducting thorough security checks for smart contracts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

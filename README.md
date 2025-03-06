@@ -1,2 +1,2 @@
-# portal-main
-Main Portal Pages: Key Features, Roadmap and Community support, etc.
+# dipcoin
+Amazing dex on sui chain. Both spot amm dex and perp dex are supported. Both wallet and zklogin are supported.
